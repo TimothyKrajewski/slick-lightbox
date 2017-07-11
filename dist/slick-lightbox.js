@@ -46,7 +46,12 @@
                 } else {
                     imgSourceParams = ' src="' + source + '" ';
                 }
-                return '<div class="slick-lightbox-slick-item">\n  <div class="slick-lightbox-slick-item-inner">\n    <img class="slick-lightbox-slick-img" ' + imgSourceParams + ' />\n    ' + caption + '\n  </div>\n</div>';
+               if(source.slice( -3 ) === "mp4")
+               {
+                     return '<div class="slick-lightbox-slick-item">\n  <div class="slick-lightbox-slick-item-inner">\n      <video class="videoPause lg-video-object lg-html5 video-js vjs-big-play-centered" controls preload="auto">   <source '  + imgSourceParams + 'type="video/mp4">"    </video>\n  </div>\n</div>';
+               }else{
+                    return '<div class="slick-lightbox-slick-item">\n  <div class="slick-lightbox-slick-item-inner">\n    <img class="slick-lightbox-slick-img" ' + imgSourceParams + ' />\n    ' + caption + '\n  </div>\n</div>';
+               }
             };
             if (this.options.images) {
                 links = $.map(this.options.images, function (img) {
